@@ -36,6 +36,10 @@ public class LevelEditor : EditorWindow
                 ld.prefabDatas[count].scaleX = c.localScale.x;
                 ld.prefabDatas[count].scaleY = c.localScale.y;
                 ld.prefabDatas[count].scaleZ = c.localScale.z;
+                GameObjectExt script = c.GetComponent<GameObjectExt>();
+                if (script != null) {
+                    ld.prefabDatas[count].extraValues = script.GetExtraValues();
+                }
                 count++;
             }
             if (!File.Exists(basePath + obj.name + ".dat") ||
@@ -70,4 +74,5 @@ public class PrefabData {
     public float scaleX;
     public float scaleY;
     public float scaleZ;
+    public float[] extraValues;
 }

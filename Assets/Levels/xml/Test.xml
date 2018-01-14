@@ -181,5 +181,21 @@
       <scaleY>1</scaleY>
       <scaleZ>1</scaleZ>
     </PrefabData>
+    <PrefabData>
+      <name>TestScript</name>
+      <positionX>0</positionX>
+      <positionY>0</positionY>
+      <positionZ>0</positionZ>
+      <rotationX>0</rotationX>
+      <rotationY>0</rotationY>
+      <rotationZ>0</rotationZ>
+      <scaleX>1</scaleX>
+      <scaleY>1</scaleY>
+      <scaleZ>1</scaleZ>
+      <extraValues>
+        <float>1</float>
+        <float>2</float>
+      </extraValues>
+    </PrefabData>
   </prefabDatas>
 </LevelData>
