@@ -22,6 +22,7 @@ public class LevelEditor : EditorWindow
         if (GUILayout.Button("Generate Level")) {
             GameObject obj =  (GameObject)EditorUtility.InstanceIDToObject(Selection.activeObject.GetInstanceID());
             LevelData ld = new LevelData();
+            ld.name = obj.name;
             ld.prefabDatas = new PrefabData[obj.transform.childCount];
             int count = 0;
             foreach (Transform c in obj.transform) {
@@ -54,11 +55,22 @@ public class LevelEditor : EditorWindow
                 stream.Close();
             }
         }
+        if (GUILayout.Button("Load Level")) {
+            string path = EditorUtility.OpenFilePanel("Choose level", "Assets\\Levels", "dat");
+            if (path.Length != 0) {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(path, FileMode.Open);
+                LevelData ld = (LevelData)bf.Deserialize(file);
+                file.Close();
+                GameObject level = new GameObject(ld.name);
+            }
+        }
     }
 }
 
 [System.Serializable]
 public class LevelData {
+    public string name;
     public PrefabData[] prefabDatas;
 }
 
