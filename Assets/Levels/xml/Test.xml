@@ -18,7 +18,7 @@
       <name>Ground</name>
       <positionX>4</positionX>
       <positionY>0</positionY>
-      <positionZ>2</positionZ>
+      <positionZ>4</positionZ>
       <rotationX>0</rotationX>
       <rotationY>0</rotationY>
       <rotationZ>0</rotationZ>
@@ -54,7 +54,7 @@
       <name>Slope</name>
       <positionX>2.5</positionX>
       <positionY>1.5</positionY>
-      <positionZ>2</positionZ>
+      <positionZ>4</positionZ>
       <rotationX>0</rotationX>
       <rotationY>0</rotationY>
       <rotationZ>0</rotationZ>
@@ -78,7 +78,7 @@
       <name>Ground</name>
       <positionX>4</positionX>
       <positionY>1.5</positionY>
-      <positionZ>2</positionZ>
+      <positionZ>4</positionZ>
       <rotationX>0</rotationX>
       <rotationY>0</rotationY>
       <rotationZ>0</rotationZ>
@@ -90,7 +90,7 @@
       <name>Slope</name>
       <positionX>5.5</positionX>
       <positionY>1.5</positionY>
-      <positionZ>2</positionZ>
+      <positionZ>4</positionZ>
       <rotationX>0</rotationX>
       <rotationY>0</rotationY>
       <rotationZ>270</rotationZ>
@@ -194,8 +194,8 @@
       <scaleY>1</scaleY>
       <scaleZ>1</scaleZ>
       <extraValues>
-        <float>1</float>
-        <float>2</float>
+        <float>4.7</float>
+        <float>5.6</float>
       </extraValues>
     </PrefabData>
   </prefabDatas>

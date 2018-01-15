@@ -11,4 +11,9 @@ public class TestScript : GameObjectExt {
 		return new float[]{extraValue1, extraValue2};
 	}
 
+	public override void SetExtraValues(float[] ev) {
+		extraValue1 = ev[0];
+		extraValue2 = ev[1];
+	}
+
 }

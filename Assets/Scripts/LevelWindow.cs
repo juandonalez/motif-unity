@@ -72,6 +72,10 @@ public class LevelWindow : EditorWindow
                     prefab.transform.Translate(new Vector3(pd.positionX, pd.positionY, pd.positionZ));
                     prefab.transform.Rotate(new Vector3(pd.rotationX, pd.rotationY, pd.rotationZ));
                     prefab.transform.localScale = new Vector3(pd.scaleX, pd.scaleY, pd.scaleZ);
+                    if (pd.extraValues != null) {
+                        GameObjectExt script = prefab.GetComponent<GameObjectExt>();
+                        script.SetExtraValues(pd.extraValues);
+                    }
                 }
             }
         }
