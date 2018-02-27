@@ -20,15 +20,18 @@ public class LevelWindow : EditorWindow
 
     void OnGUI()
     {
-        if (GUILayout.Button("Generate Level")) {
+        if (GUILayout.Button("Save Level")) {
             GameObject obj =  (GameObject)EditorUtility.InstanceIDToObject(Selection.activeObject.GetInstanceID());
             LevelData ld = new LevelData();
             ld.name = obj.name;
             ld.prefabDatas = new PrefabData[obj.transform.childCount];
+            Dictionary<string, int> prefabIndexes = GetPrefabIndexes();
             int count = 0;
             foreach (Transform c in obj.transform) {
+                c.name = c.name.Split(' ')[0];
                 ld.prefabDatas[count] = new PrefabData();
                 ld.prefabDatas[count].name = c.name;
+                ld.prefabDatas[count].index = prefabIndexes[c.name];
                 ld.prefabDatas[count].positionX = c.localPosition.x;
                 ld.prefabDatas[count].positionY = c.localPosition.y;
                 ld.prefabDatas[count].positionZ = c.localPosition.z;
@@ -79,28 +82,44 @@ public class LevelWindow : EditorWindow
                 }
             }
         }
+        if (GUILayout.Button("Generate Info File")) {
+            /*LevelData[] levelDatas;
+            Dictionary<string, int> prefabs = new Dictionary<string, int>();
+            DirectoryInfo dirInfo = new DirectoryInfo(Application.dataPath + "\\Levels\\");
+            FileInfo[] fileInfos = dirInfo.GetFiles("*.dat");
+            levelDatas = new LevelData[fileInfos.Length];
+            BinaryFormatter bf = new BinaryFormatter();
+            for (int i = 0; i < levelDatas.Length; i++) {
+                FileStream file = fileInfos[i].Open(FileMode.Open);
+                levelDatas[i] = (LevelData)bf.Deserialize(file);
+                file.Close();
+            }
+            foreach (LevelData ld in levelDatas) {
+                foreach (PrefabData pd in ld.prefabDatas) {
+                    if (prefabs.ContainsKey(pd.name)) {
+                        prefabs[pd.name]++;
+                    }
+                    else {
+                        prefabs.Add(pd.name, 1);
+                    }
+                }
+            }*/
+        }
     }
-}
 
-[System.Serializable]
-public class LevelData {
-    public string name;
-    public PrefabData[] prefabDatas;
-}
+    void GenerateInfoFile() {
 
-[System.Serializable]
-public class PrefabData {
-    public string name;
-    public float positionX;
-    public float positionY;
-    public float positionZ;
-    public float rotationX;
-    public float rotationY;
-    public float rotationZ;
-    public float scaleX;
-    public float scaleY;
-    public float scaleZ;
-    public float[] extraValues;
+    }
+
+    Dictionary<string, int> GetPrefabIndexes() {
+        DirectoryInfo dirInfo = new DirectoryInfo(Application.dataPath + "\\Prefabs\\");
+        FileInfo[] fileInfos = dirInfo.GetFiles("*.prefab");
+        Dictionary<string, int> indexes = new Dictionary<string, int>();
+        for (int i = 0; i < fileInfos.Length; i++) {
+            indexes.Add(fileInfos[i].Name.Replace(".prefab", ""), i);
+        }
+        return indexes;
+    }
 }
 
 public static class PrefabLoader
