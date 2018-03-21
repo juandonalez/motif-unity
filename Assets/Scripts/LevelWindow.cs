@@ -72,8 +72,8 @@ public class LevelWindow : EditorWindow
                     PrefabData pd = ld.prefabDatas[i];
                     GameObject prefab = (GameObject)PrefabUtility.InstantiatePrefab(prefabs[pd.name]);
                     prefab.transform.parent = level.transform;
-                    prefab.transform.Translate(new Vector3(pd.positionX, pd.positionY, pd.positionZ));
-                    prefab.transform.Rotate(new Vector3(pd.rotationX, pd.rotationY, pd.rotationZ));
+                    prefab.transform.Translate(pd.positionX, pd.positionY, pd.positionZ);
+                    prefab.transform.Rotate(pd.rotationX, pd.rotationY, pd.rotationZ);
                     prefab.transform.localScale = new Vector3(pd.scaleX, pd.scaleY, pd.scaleZ);
                     if (pd.extraValues != null) {
                         GameObjectExt script = prefab.GetComponent<GameObjectExt>();
@@ -82,33 +82,6 @@ public class LevelWindow : EditorWindow
                 }
             }
         }
-        if (GUILayout.Button("Generate Info File")) {
-            /*LevelData[] levelDatas;
-            Dictionary<string, int> prefabs = new Dictionary<string, int>();
-            DirectoryInfo dirInfo = new DirectoryInfo(Application.dataPath + "\\Levels\\");
-            FileInfo[] fileInfos = dirInfo.GetFiles("*.dat");
-            levelDatas = new LevelData[fileInfos.Length];
-            BinaryFormatter bf = new BinaryFormatter();
-            for (int i = 0; i < levelDatas.Length; i++) {
-                FileStream file = fileInfos[i].Open(FileMode.Open);
-                levelDatas[i] = (LevelData)bf.Deserialize(file);
-                file.Close();
-            }
-            foreach (LevelData ld in levelDatas) {
-                foreach (PrefabData pd in ld.prefabDatas) {
-                    if (prefabs.ContainsKey(pd.name)) {
-                        prefabs[pd.name]++;
-                    }
-                    else {
-                        prefabs.Add(pd.name, 1);
-                    }
-                }
-            }*/
-        }
-    }
-
-    void GenerateInfoFile() {
-
     }
 
     Dictionary<string, int> GetPrefabIndexes() {
