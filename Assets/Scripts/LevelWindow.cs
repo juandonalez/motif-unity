@@ -27,6 +27,7 @@ public class LevelWindow : EditorWindow
             ld.prefabDatas = new PrefabData[obj.transform.childCount];
             Dictionary<string, int> prefabIndexes = GetPrefabIndexes();
             int count = 0;
+            bool hasEndpoint = false;
             foreach (Transform c in obj.transform) {
                 c.name = c.name.Split(' ')[0];
                 ld.prefabDatas[count] = new PrefabData();
@@ -45,18 +46,27 @@ public class LevelWindow : EditorWindow
                 if (script != null) {
                     ld.prefabDatas[count].extraValues = script.GetExtraValues();
                 }
+                if (c.name == "Endpoint") {
+                    hasEndpoint = true;
+                    ld.height = c.localPosition.y;
+                }
                 count++;
             }
             if (!File.Exists(basePath + obj.name + ".dat") ||
             EditorUtility.DisplayDialog("File already exists", "Do you want to overwrite?", "Yes", "No")) {
-                XmlSerializer serializer = new XmlSerializer(typeof(LevelData));
-                StreamWriter writer = new StreamWriter(basePath + "xml\\" + obj.name + ".xml");
-                serializer.Serialize(writer.BaseStream, ld);
-                writer.Close();
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream stream = File.Create(basePath + obj.name + ".dat");
-                bf.Serialize(stream, ld);
-                stream.Close();
+                if (!hasEndpoint) {
+                    EditorUtility.DisplayDialog("Error", "This level has no endpoint", "OK");
+                }
+                else {
+                    XmlSerializer serializer = new XmlSerializer(typeof(LevelData));
+                    StreamWriter writer = new StreamWriter(basePath + "xml\\" + obj.name + ".xml");
+                    serializer.Serialize(writer.BaseStream, ld);
+                    writer.Close();
+                    BinaryFormatter bf = new BinaryFormatter();
+                    FileStream stream = File.Create(basePath + obj.name + ".dat");
+                    bf.Serialize(stream, ld);
+                    stream.Close();
+                }
             }
         }
         if (GUILayout.Button("Load Level")) {
