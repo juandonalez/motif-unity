@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class LevelData {
     public string name;
-    public float height;
+    public float endpointX;
+    public float endpointY;
     public PrefabData[] prefabDatas;
 }
 

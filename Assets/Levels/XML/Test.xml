@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <LevelData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <name>Test</name>
-  <height>3</height>
+  <endpointX>9</endpointX>
+  <endpointY>0</endpointY>
   <prefabDatas>
     <PrefabData>
       <name>TrimSlope</name>
@@ -219,7 +220,7 @@
       <name>Endpoint</name>
       <index>0</index>
       <positionX>9</positionX>
-      <positionY>3</positionY>
+      <positionY>0</positionY>
       <positionZ>0</positionZ>
       <rotationX>0</rotationX>
       <rotationY>0</rotationY>

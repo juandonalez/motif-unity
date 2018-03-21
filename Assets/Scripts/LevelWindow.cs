@@ -48,7 +48,8 @@ public class LevelWindow : EditorWindow
                 }
                 if (c.name == "Endpoint") {
                     hasEndpoint = true;
-                    ld.height = c.localPosition.y;
+                    ld.endpointX = c.localPosition.x;
+                    ld.endpointY = c.localPosition.y;
                 }
                 count++;
             }

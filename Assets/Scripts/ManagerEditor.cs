@@ -73,14 +73,19 @@ public class ManagerEditor : MonoBehaviour {
 
 		pooler.Initiate(prefabs);
 
+		levelParents[1].Translate(currLevel.endpointX, currLevel.endpointY, 0);
+		levelParents[2].Translate(currLevel.endpointX*2, currLevel.endpointY, 0);
+
 		for (int i = 0; i < currLevel.prefabDatas.Length; i++) {
 			PrefabData pd = currLevel.prefabDatas[i];
 			pooler.ActivateObject(levelParents[0], pd.index, pd.positionX, pd.positionY, pd.positionZ,
 			pd.rotationX, pd.rotationY, pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
-			pooler.ActivateObject(levelParents[1], pd.index, pd.positionX, pd.positionY, pd.positionZ,
-			pd.rotationX, pd.rotationY, pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
-			pooler.ActivateObject(levelParents[2], pd.index, pd.positionX, pd.positionY, pd.positionZ,
-			pd.rotationX, pd.rotationY, pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
+			pooler.ActivateObject(levelParents[1], pd.index, pd.positionX + levelParents[1].localPosition.x,
+			pd.positionY + levelParents[1].localPosition.y, pd.positionZ, pd.rotationX, pd.rotationY,
+			pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
+			pooler.ActivateObject(levelParents[1], pd.index, pd.positionX + levelParents[2].localPosition.x,
+			pd.positionY + levelParents[2].localPosition.y, pd.positionZ, pd.rotationX, pd.rotationY,
+			pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
 		}
 	}
 
