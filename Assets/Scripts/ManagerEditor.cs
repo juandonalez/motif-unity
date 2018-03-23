@@ -83,7 +83,7 @@ public class ManagerEditor : MonoBehaviour {
 			pooler.ActivateObject(levelParents[1], pd.index, pd.positionX + levelParents[1].localPosition.x,
 			pd.positionY + levelParents[1].localPosition.y, pd.positionZ, pd.rotationX, pd.rotationY,
 			pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
-			pooler.ActivateObject(levelParents[1], pd.index, pd.positionX + levelParents[2].localPosition.x,
+			pooler.ActivateObject(levelParents[2], pd.index, pd.positionX + levelParents[2].localPosition.x,
 			pd.positionY + levelParents[2].localPosition.y, pd.positionZ, pd.rotationX, pd.rotationY,
 			pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
 		}
