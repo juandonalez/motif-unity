@@ -8,6 +8,8 @@ public class GameObjectExt : MonoBehaviour {
 		return new float[0];
 	}
 
+	public virtual void Reset() {}
+
 	public virtual void SetExtraValues(float[] ev) {}
 
 }

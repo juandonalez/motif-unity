@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooler : MonoBehaviour {
+public class LevelPooler : MonoBehaviour {
 
+	public Camera cam;
 	public GameObject[][] objects;
+	LevelPiece[] levelPieces;
 	Transform[][] transforms;
 	GameObjectExt[][] scripts;
 	int endpointIndex = 2;
 	Vector3[] endpointPositions;
-	Camera cam;
-
-	void Awake() {
-		cam = Camera.main;
-	}
 
 	void Update() {
 		for (int k = 0; k < endpointPositions.Length; k++) {
@@ -27,6 +24,7 @@ public class ObjectPooler : MonoBehaviour {
 						if (objects[i][j].activeSelf) {
 							viewPos = cam.WorldToViewportPoint(transforms[i][j].position);
 							if (viewPos.x < -0.0000001) {
+								Debug.Log(viewPos.x);
 								transforms[i][j].localPosition = new Vector3(0, 0, 0);
 								transforms[i][j].localEulerAngles = new Vector3(0, 0, 0);
 								transforms[i][j].localScale = new Vector3(1, 1, 1);

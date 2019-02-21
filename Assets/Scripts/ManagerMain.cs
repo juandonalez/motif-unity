@@ -81,6 +81,7 @@ public class ManagerMain : MonoBehaviour {
 			for (int j = 0; j < prefabs[i].Length; j++) {
 				prefabs[i][j] = Instantiate(gameObjects[prefabIndexes[i]]);
 				prefabs[i][j].SetActive(false);
+				prefabs[i][j].name = prefabs[i][j].name.Split('(')[0];
 			}
 		}
 	}

@@ -25,3 +25,10 @@ public class PrefabData {
     public float scaleZ;
     public float[] extraValues;
 }
+
+public class LevelPiece {
+    public GameObject prefab;
+    public Transform transform;
+    public GameObjectExt script;
+    public int parent;
+}

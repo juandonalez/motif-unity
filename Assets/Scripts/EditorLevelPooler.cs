@@ -4,26 +4,16 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class ManagerEditor : MonoBehaviour {
+public class EditorLevelPooler : MonoBehaviour
+{
+  public string levelName = "Test";
+  Transform[] levelParents;
+  Dictionary<string, LevelData> levelDatas;
+  LevelData currLevel;
+  LevelPiece[] levelPieces;
 
-	public static ManagerEditor instance = null;
-
-	public string levelName = "Test";
-
-	Dictionary<string, LevelData> levelDatas;
-	ObjectPooler pooler;
-	LevelData currLevel;
-	Transform[] levelParents;
-
-	void Awake() {
-		if (instance == null) {
-			instance = this;
-		}
-		else if (instance != this) {
-			Destroy(gameObject);
-		}
-
-		pooler = GetComponent<ObjectPooler>();
+  void Awake()
+  {
 		levelParents = new Transform[]{new GameObject("First").transform, new GameObject("Second").transform,
 		new GameObject("Third").transform};
 
@@ -60,6 +50,7 @@ public class ManagerEditor : MonoBehaviour {
 			}
 		}
 
+		/*
 		// instantiate all prefabs at corresponding index
 		GameObject[][] prefabs = new GameObject[prefabIndexes.Count][];
 		Dictionary<string, GameObject> gameObjects = PrefabLoader.LoadAllPrefabsOfType<MonoBehaviour>("Assets/Prefabs");
@@ -72,26 +63,48 @@ public class ManagerEditor : MonoBehaviour {
 			}
 		}
 
-		pooler.Initiate(prefabs);
-
-		levelParents[1].Translate(currLevel.endpointX, currLevel.endpointY, 0);
-		levelParents[2].Translate(currLevel.endpointX*2, currLevel.endpointY, 0);
-
-		for (int i = 0; i < currLevel.prefabDatas.Length; i++) {
-			PrefabData pd = currLevel.prefabDatas[i];
-			pooler.ActivateObject(levelParents[0], pd.index, pd.positionX, pd.positionY, pd.positionZ,
-			pd.rotationX, pd.rotationY, pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
-			pooler.ActivateObject(levelParents[1], pd.index, pd.positionX + levelParents[1].localPosition.x,
-			pd.positionY + levelParents[1].localPosition.y, pd.positionZ, pd.rotationX, pd.rotationY,
-			pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
-			pooler.ActivateObject(levelParents[2], pd.index, pd.positionX + levelParents[2].localPosition.x,
-			pd.positionY + levelParents[2].localPosition.y, pd.positionZ, pd.rotationX, pd.rotationY,
-			pd.rotationZ, pd.scaleX, pd.scaleY, pd.scaleZ, pd.extraValues);
+		objects = o;
+		endpointPositions = new Vector3[3];
+		transforms = new Transform[o.Length][];
+		scripts = new GameObjectExt[o.Length][];
+		for (int i = 0; i < o.Length; i++) {
+			transforms[i] = new Transform[o[i].Length];
+			scripts[i] = new GameObjectExt[o[i].Length];
+			if (o[i][0].name == "Endpoint") {
+				endpointIndex = i;
+			}
+			for (int j = 0; j < o[i].Length; j++) {
+				transforms[i][j] = o[i][j].transform;
+				scripts[i][j] = o[i][j].GetComponent<GameObjectExt>();
+			}
+		}
+		*/
+	
+		// instantiate all prefabs at corresponding index
+		LevelPiece[][] levelPieces = new LevelPiece[prefabIndexes.Count][];
+		Dictionary<string, GameObject> gameObjects = PrefabLoader.LoadAllPrefabsOfType<MonoBehaviour>("Assets/Prefabs");
+		for (int i = 0; i < prefabIndexes.Count; i++) {
+			levelPieces[i] = new LevelPiece[prefabCount[i]*3];
+			for (int j = 0; j < levelPieces[i].Length; j++) {
+				levelPieces[i][j] = new LevelPiece();
+				levelPieces[i][j].prefab = Instantiate(gameObjects[prefabIndexes[i]]);
+				levelPieces[i][j].prefab.SetActive(false);
+				levelPieces[i][j].prefab.name = levelPieces[i][j].prefab.name.Split('(')[0];
+				levelPieces[i][j].transform = levelPieces[i][j].prefab.transform;
+				levelPieces[i][j].script = levelPieces[i][j].prefab.GetComponent<GameObjectExt>();
+			}
 		}
 	}
 
-	void Update() {
-		
-	}
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
