@@ -7,7 +7,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class EditorManager : MonoBehaviour {
 
 	public EditorLevelPooler levelPooler;
-	public string levelName = "Test";
 
 	// Use this for initialization
 	void Start () {

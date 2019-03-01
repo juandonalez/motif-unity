@@ -209,7 +209,8 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 131713943}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114021301823665122, guid: ea96bf22430a6484f8c710047cab6c69, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea96bf22430a6484f8c710047cab6c69, type: 3}
 --- !u!1 &653602202
 GameObject:
@@ -241,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f107bb4d65236c4385a87e380af49c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1542071816}
   levelName: Test
 --- !u!4 &653602204
 Transform:
@@ -269,4 +271,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPooler: {fileID: 653602203}
-  levelName: Test
+--- !u!1 &1542071811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1559811595928230, guid: ea96bf22430a6484f8c710047cab6c69,
+    type: 3}
+  m_PrefabInstance: {fileID: 536255789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1542071812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542071811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba8232fe9ff3a948b71c2e1e05c2935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 0
+  y: 0
+--- !u!20 &1542071816 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20547862567744962, guid: ea96bf22430a6484f8c710047cab6c69,
+    type: 3}
+  m_PrefabInstance: {fileID: 536255789}
+  m_PrefabAsset: {fileID: 0}
