@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f107bb4d65236c4385a87e380af49c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1542071816}
   levelName: Test
 --- !u!4 &653602204
 Transform:
@@ -290,10 +289,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 0
-  y: 0
---- !u!20 &1542071816 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 20547862567744962, guid: ea96bf22430a6484f8c710047cab6c69,
-    type: 3}
-  m_PrefabInstance: {fileID: 536255789}
-  m_PrefabAsset: {fileID: 0}

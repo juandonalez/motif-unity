@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Loader : MonoBehaviour 
 {
-	public GameObject managerMain;
+	public GameObject mainManager;
 
 	void Awake() {
-		if (ManagerMain.instance == null) {
-			Instantiate(managerMain);
+		if (MainManager.instance == null) {
+			Instantiate(mainManager);
 		}
 	}
 }

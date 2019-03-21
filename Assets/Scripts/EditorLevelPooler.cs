@@ -24,15 +24,15 @@ public class EditorLevelPooler : MonoBehaviour
         levelDatas = new Dictionary<string, LevelData>();
         List<string> prefabIndexes = new List<string>();
         for (int i = 0; i < fileInfos.Length; i++) {
-        FileStream file = fileInfos[i].Open(FileMode.Open);
-        LevelData ld = (LevelData)bf.Deserialize(file);
-        levelDatas.Add(ld.name, ld);
-        file.Close();
-        // go through prefabs of every level to assign integers instead of string names, for efficient searching
-        foreach (PrefabData pd in ld.prefabDatas) {
-            if (!prefabIndexes.Contains(pd.name)) {
-                prefabIndexes.Add(pd.name);
-            }
+            FileStream file = fileInfos[i].Open(FileMode.Open);
+            LevelData ld = (LevelData)bf.Deserialize(file);
+            levelDatas.Add(ld.name, ld);
+            file.Close();
+            // go through prefabs of every level to assign integers instead of string names, for efficient searching
+            foreach (PrefabData pd in ld.prefabDatas) {
+                if (!prefabIndexes.Contains(pd.name)) {
+                    prefabIndexes.Add(pd.name);
+                }
                 pd.index = prefabIndexes.IndexOf(pd.name);
             }
         }
@@ -53,12 +53,12 @@ public class EditorLevelPooler : MonoBehaviour
 
         // instantiate all prefabs at corresponding index
         levelPieces = new LevelPiece[prefabIndexes.Count][];
-        Dictionary<string, GameObject> gameObjects = PrefabLoader.LoadAllPrefabsOfType<MonoBehaviour>("Assets/Prefabs");
+        Dictionary<string, GameObject> prefabs = PrefabLoader.LoadAllPrefabsOfType<MonoBehaviour>("Assets/Prefabs");
         for (int i = 0; i < prefabIndexes.Count; i++) {
             levelPieces[i] = new LevelPiece[prefabCount[i]*3];
             for (int j = 0; j < levelPieces[i].Length; j++) {
                 levelPieces[i][j] = new LevelPiece();
-                levelPieces[i][j].prefab = Instantiate(gameObjects[prefabIndexes[i]]);
+                levelPieces[i][j].prefab = Instantiate(prefabs[prefabIndexes[i]]);
                 levelPieces[i][j].prefab.SetActive(false);
                 // when instantiated every name has (1), (2), etc so remove that
                 levelPieces[i][j].prefab.name = levelPieces[i][j].prefab.name.Split('(')[0];
@@ -112,7 +112,7 @@ public class EditorLevelPooler : MonoBehaviour
         }
     }
 
-    public void PlaceLevelPiece(int parent, int index, float offsetX, float offsetY, float pX, float pY, float pZ, float rX,
+    void PlaceLevelPiece(int parent, int index, float offsetX, float offsetY, float pX, float pY, float pZ, float rX,
     float rY, float rZ, float sX, float sY, float sZ, float[] extraValues)
     {
         LevelPiece lp;
