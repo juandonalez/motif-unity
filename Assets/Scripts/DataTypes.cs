@@ -29,6 +29,6 @@ public class PrefabData {
 public class LevelPiece {
     public GameObject prefab;
     public Transform transform;
-    public GameObjectExt script;
+    public LevelPieceScript script;
     public int parent;
 }

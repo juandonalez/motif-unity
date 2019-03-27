@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestScript : GameObjectExt {
+public class TestScript : LevelPieceScript {
 
 	public float extraValue1 = 0;
 	public float extraValue2 = 0;

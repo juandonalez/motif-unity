@@ -64,7 +64,7 @@ public class EditorLevelPooler : MonoBehaviour
                 levelPieces[i][j].prefab.name = levelPieces[i][j].prefab.name.Split('(')[0];
                 // get references to transform and script so we don't have to get them each time
                 levelPieces[i][j].transform = levelPieces[i][j].prefab.transform;
-                levelPieces[i][j].script = levelPieces[i][j].prefab.GetComponent<GameObjectExt>();
+                levelPieces[i][j].script = levelPieces[i][j].prefab.GetComponent<LevelPieceScript>();
                 levelPieces[i][j].parent = 0;
             }
         }

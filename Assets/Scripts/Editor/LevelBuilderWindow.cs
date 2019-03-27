@@ -42,7 +42,7 @@ public class LevelBuilderWindow : EditorWindow
                 ld.prefabDatas[count].scaleX = c.localScale.x;
                 ld.prefabDatas[count].scaleY = c.localScale.y;
                 ld.prefabDatas[count].scaleZ = c.localScale.z;
-                GameObjectExt script = c.GetComponent<GameObjectExt>();
+                LevelPieceScript script = c.GetComponent<LevelPieceScript>();
                 if (script != null) {
                     ld.prefabDatas[count].extraValues = script.GetExtraValues();
                 }
@@ -87,7 +87,7 @@ public class LevelBuilderWindow : EditorWindow
                     prefab.transform.Rotate(pd.rotationX, pd.rotationY, pd.rotationZ);
                     prefab.transform.localScale = new Vector3(pd.scaleX, pd.scaleY, pd.scaleZ);
                     if (pd.extraValues != null) {
-                        GameObjectExt script = prefab.GetComponent<GameObjectExt>();
+                        LevelPieceScript script = prefab.GetComponent<LevelPieceScript>();
                         script.SetExtraValues(pd.extraValues);
                     }
                 }

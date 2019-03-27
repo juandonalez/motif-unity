@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameObjectExt : MonoBehaviour {
+public class LevelPieceScript : MonoBehaviour {
 
 	public virtual float[] GetExtraValues() {
 		return new float[0];
