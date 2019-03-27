@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EditorManager : MonoBehaviour {
-
-	public EditorLevelPooler levelPooler;
-
-	void Update () {
+public class EditorManager : MonoBehaviour
+{
+	void Update ()
+    {
 		
 	}
 

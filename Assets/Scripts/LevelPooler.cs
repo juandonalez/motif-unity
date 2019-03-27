@@ -21,7 +21,7 @@ public class LevelPooler : MonoBehaviour
         cam = Camera.main.GetComponent<EditorCamera>();
 
         // load in all the data for all the levels
-        DirectoryInfo dirInfo = new DirectoryInfo(Application.dataPath + "\\Levels\\");
+        DirectoryInfo dirInfo = new DirectoryInfo(System.IO.Directory.GetCurrentDirectory() + "\\Assets\\Levels\\");
         FileInfo[] fileInfos = dirInfo.GetFiles("*.dat");
         BinaryFormatter bf = new BinaryFormatter();
         Dictionary<string, LevelData> levelDatas = new Dictionary<string, LevelData>();
@@ -93,7 +93,7 @@ public class LevelPooler : MonoBehaviour
 
 		// instantiate all prefabs at corresponding index
 		levelPieces = new LevelPiece[prefabIndexes.Count][];
-		Dictionary<string, GameObject> prefabs = PrefabLoader.LoadAllPrefabsOfType<MonoBehaviour>("Assets/Prefabs");
+		Dictionary<string, GameObject> prefabs = PrefabLoader.LoadAllPrefabsOfType<MonoBehaviour>("Assets/Resources/LevelPieces");
 		for (int i = 0; i < prefabIndexes.Count; i++) {
 			levelPieces[i] = new LevelPiece[prefabTop3[i][0] + prefabTop3[i][1] + prefabTop3[i][2]];
 			for (int j = 0; j < levelPieces[i].Length; j++) {

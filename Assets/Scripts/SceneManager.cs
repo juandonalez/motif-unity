@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    public LevelPooler levelPooler;
-
     void Update()
     {
         
