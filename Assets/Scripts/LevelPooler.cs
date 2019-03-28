@@ -21,7 +21,7 @@ public class LevelPooler : MonoBehaviour
         cam = Camera.main.GetComponent<EditorCamera>();
 
         // load in all the data for all the levels
-        DirectoryInfo dirInfo = new DirectoryInfo(System.IO.Directory.GetCurrentDirectory() + "\\Assets\\Levels\\");
+        DirectoryInfo dirInfo = new DirectoryInfo(Application.streamingAssetsPath + "\\Levels\\");
         FileInfo[] fileInfos = dirInfo.GetFiles("*.dat");
         BinaryFormatter bf = new BinaryFormatter();
         Dictionary<string, LevelData> levelDatas = new Dictionary<string, LevelData>();

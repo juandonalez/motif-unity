@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class LevelBuilderWindow : EditorWindow
 {
-    private string basePath = System.IO.Directory.GetCurrentDirectory() + "\\Assets\\Levels\\";
+    private string basePath = Application.streamingAssetsPath + "\\Levels\\";
 
     // Add menu named "My Window" to the Window menu
     [MenuItem("Window/Level Builder")]
@@ -71,7 +71,7 @@ public class LevelBuilderWindow : EditorWindow
             }
         }
         if (GUILayout.Button("Load Level")) {
-            string path = EditorUtility.OpenFilePanel("Choose level", "Assets\\Levels", "dat");
+            string path = EditorUtility.OpenFilePanel("Choose level", "Assets\\StreamingAssets\\Levels", "dat");
             if (path.Length != 0) {
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Open(path, FileMode.Open);
